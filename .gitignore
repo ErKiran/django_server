@@ -1,0 +1,5 @@
+db.sqlite3
+.vscode/
+api/Model_of_PDDuCNN.hdf5
+venv/
+plantds/settings.py
