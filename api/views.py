@@ -2,7 +2,7 @@ from keras.preprocessing import image
 import numpy as np
 from rest_framework import generics
 from .serializers import ImageSerializer
-from .deeplearning import graph, model, output_list
+from .deeplearning import graph, model
 from rest_framework.response import Response
 
 
@@ -27,8 +27,6 @@ class Predict(generics.CreateAPIView):
                 prediction = model.predict(img)
 
             prediction_flatten = prediction.flatten()
-            max_val_index = np.argmax(prediction_flatten)
-            result = output_list[max_val_index]
-
-            return Response({'result': result})
+          
+            return Response({'result': prediction_flatten})
         return Response({'result': data.errors})
